@@ -39,7 +39,9 @@
   width: calc(var(--cursorW) + 30px);
   height: calc(var(--cursorH) + 20px);
   border-radius: 100px;
-  transition: all 0.5s ease-out, height 0.5s ease-in-out, width 0.5s ease-out;
+  z-index: 98;
+  mix-blend-mode: normal;
+  transition: width 0.3s ease-out, height 0.3s ease-in-out, border-radius 0.3s ease-out, box-shadow 0.3s ease-out;
   animation: cursorHeartbeat 1.2s ease-in-out infinite;
 }
 
