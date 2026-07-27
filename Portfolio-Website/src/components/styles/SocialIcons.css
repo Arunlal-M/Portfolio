@@ -14,12 +14,13 @@
   display: none;
   flex-direction: column;
   gap: 8px;
-  z-index: 999;
+  z-index: 99;
   padding: 10px;
 }
 .social-icons:hover {
   transition: 0.3s;
   color: var(--backgroundColor);
+  z-index: 99;
 }
 .social-icons a:hover {
   color: var(--backgroundColor);
@@ -56,7 +57,7 @@
   font-size: 15px;
   line-height: 15px;
   font-weight: 600;
-  color: #5e5e5e;
+  color: #a1a1a1;
   cursor: pointer;
   transition: 0.5s;
   transform-origin: left bottom;
@@ -64,6 +65,7 @@
 }
 .resume-button:hover {
   color: #fff;
+  z-index: 99;
 }
 div.resume-button span {
   color: #fff;
