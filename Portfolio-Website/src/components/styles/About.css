@@ -39,13 +39,18 @@
   background: linear-gradient(90deg, rgba(57, 255, 20, 0.05) 0%, transparent 100%);
   border-radius: 0 15px 15px 0;
 }
-.about-me h3 {
-  font-size: 36px;
+.about-me h3,
+.about-me h2,
+.about-me .title {
+  font-size: calc(2.5vw + 18px);
+  line-height: calc(2.5vw + 14px);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.about-me .do-h2 {
   color: var(--accentColor);
-  word-spacing: -0.5em;
 }
 
 .about-me .line {
@@ -63,10 +68,12 @@
 }
 
 .about-me p {
-  font-size: 16px;
+  color: #ffffff;
+  font-size: 1.1rem;
   font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 1px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
 }
 
 .about-decor-top {
@@ -153,27 +160,44 @@
     background: transparent;
   }
   .about-me p {
-    font-size: 1.2vw;
-    line-height: 2.1vw;
+    color: #ffffff;
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    line-height: 1.8;
   }
 }
 @media only screen and (min-width: 1280px) {
   /* MacBook Air 13in (Native: 2560x1664, Logical: 1280x832) */
   .about-me p {
-    font-size: 1.2vw;
-    line-height: 2.1vw;
+    color: #ffffff;
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    line-height: 1.8;
   }
 }
 @media only screen and (min-width: 1728px) {
   /* MacBook Pro 16in (Native: 3456x2234, Logical: 1728x1117) */
   .about-me p {
-    font-size: 1.2vw;
-    line-height: 2.1vw;
+    color: #ffffff;
+    font-size: clamp(1.05rem, 1.15vw, 1.3rem);
+    line-height: 1.8;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .about-me .title,
+  .about-me h2,
+  .about-me h3 {
+    font-size: 38px;
+    line-height: 40px;
   }
 }
 @media only screen and (min-width: 1950px) {
   .about-me p {
     font-size: 1.2vw;
     line-height: 2.4vw;
+  }
+  .about-me .title,
+  .about-me h2,
+  .about-me h3 {
+    font-size: 4.5rem;
+    line-height: 4.3rem;
   }
 }

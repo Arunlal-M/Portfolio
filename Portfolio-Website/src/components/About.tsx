@@ -8,7 +8,9 @@ const About = () => {
         <HiOutlineChevronDoubleUp className="decor-arrow up-arrow" />
       </div>
       <div className="about-me">
-        <h3 className="title">About Me</h3>
+        <h2 className="title">
+          ABOUT <span className="do-h2">ME</span>
+        </h2>
         {/* <hr className="line" /> */}
         <p className="para">
           Software Engineer with around 2 years of experience architecting distributed backend systems, real-time architectures, and scalable cloud applications. Expert in RESTful microservices, high-availability databases, and CI/CD observability pipelines. Passionate about system design, cross-team collaboration, and building high-performance enterprise solutions.
