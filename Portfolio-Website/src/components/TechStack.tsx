@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { useRef, useMemo, useState, useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
@@ -128,6 +129,9 @@ const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
+    // Notify ScrollTrigger to recalculate pin spacings when this component mounts
+    setTimeout(() => ScrollTrigger.refresh(), 100);
+    
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       const threshold = document
@@ -168,7 +172,9 @@ const TechStack = () => {
 
   return (
     <div className="techstack">
-      <h2> My Techstack</h2>
+      <h2 className="techstack-title">
+        MY <span className="do-h2">TECHSTACK</span>
+      </h2>
 
       <Canvas
         shadows
