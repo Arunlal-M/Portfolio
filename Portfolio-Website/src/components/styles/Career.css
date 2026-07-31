@@ -1,217 +1,389 @@
 .career-section {
+  position: relative;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.career-pin-wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: transparent;
+  padding: 100px 0;
+  box-sizing: border-box;
+}
+
+.career-pin-wrap::before {
+  content: 'EXPERIENCE';
+  position: absolute;
+  bottom: -0.06em;
+  right: 2rem;
+  font-size: clamp(5rem, 11vw, 13rem);
+  font-weight: 900;
+  color: rgba(57, 255, 20, 0.045);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* ── Header ────────────────────────────────────── */
+.career-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 4.5rem);
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.career-label,
+.career-header h2 {
+  font-size: calc(2.5vw + 18px);
+  line-height: calc(2.5vw + 14px);
+  font-weight: 600;
+  margin: 0;
+}
+
+.career-label .do-h2,
+.career-header h2 .do-h2 {
+  color: var(--accentColor);
+}
+
+.career-labelRight {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: "Fira Code", monospace;
+}
+
+/* ── Body Row ──────────────────────────────────── */
+.career-body-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  margin-top: 2rem;
+  box-sizing: border-box;
+}
+
+/* ── Vertical Timeline ─────────────────────────── */
+.career-timeline-container {
+  width: 100px;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  place-items: center;
   justify-content: center;
-  position: relative;
-  opacity: 1;
-  min-height: var(--vh);
-  height: auto;
-  margin: auto;
-  margin-bottom: 250px;
-  padding: 120px 0px;
+  flex-shrink: 0;
+  margin-left: clamp(7.5rem, 16vw, 18rem);
 }
 
-.career-section h2 {
-  font-size: 70px;
-  line-height: 70px;
-  font-weight: 400;
-  text-align: center;
-  background: linear-gradient(0deg, #39FF14, #ffffff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  margin-top: 50px;
-  margin-bottom: 90px;
-}
-.career-section h2 > span {
-  font-family: "Fira Code", monospace;
-  font-weight: 300;
-}
-.career-info {
+.career-timelineBody {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  margin: 0px auto;
-}
-.career-info-box {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
-.career-info-box p {
-  width: 40%;
-  font-size: 18px;
-  font-weight: 300;
-  margin: 0;
-}
-.career-info-in {
-  display: flex;
-  width: 40%;
-  justify-content: space-between;
-  gap: 50px;
-}
-.career-info h3 {
-  font-size: 48px;
-  margin: 0;
-  font-weight: 500;
-  line-height: 45px;
-}
-
-.career-info h4 {
-  font-size: 33px;
-  line-height: 30px;
-  letter-spacing: 0.8px;
-  font-weight: 500;
-  margin: 0;
-}
-.career-info h5 {
-  font-weight: 400;
-  letter-spacing: 0.7px;
-  font-size: 20px;
-  text-transform: capitalize;
-  margin: 10px 0px;
-  color: var(--accentColor);
-}
-.career-timeline {
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 3px;
   height: 100%;
-  background-image: linear-gradient(
-    to top,
-    #39FF14 20%,
-    var(--accentColor) 50%,
-    transparent 95%
-  );
-  max-height: 0%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.career-dot {
+
+/* Vertical Snake line */
+.career-snakeLine {
   position: absolute;
+  top: 0;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 50%);
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #39FF14 10%,
+    rgba(57, 255, 20, 0.55) 50%,
+    rgba(57, 255, 20, 0.2) 90%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.28);
+  pointer-events: none;
+  z-index: 0; /* Behind the numbers so it doesn't overlap the circumference */
+}
+
+/* ── Dots and Numbers ────────────────────────────── */
+.career-timeline-dots {
+  position: absolute;
+  top: 25px; /* Center of first dot */
+  bottom: 25px; /* Center of last dot */
+  left: 50%;
+  width: 50px;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+.career-timeline-number {
+  position: absolute;
+  left: 0;
+  font-family: "Fira Code", monospace;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #0b080c;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4; 
+  transition: all 0.3s ease;
+  transform: translateY(-50%); /* Centers the element on the exact top % */
+}
+
+.career-timeline-number:hover {
+  color: #39FF14;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.career-timeline-number.active {
+  color: #39FF14;
+}
+
+/* Pulsing effect applied directly to the active number when not scrolling */
+.career-timeline-number.pulsing {
   background-color: #39FF14;
-  width: 10px;
-  height: 10px;
-  border-radius: 50px;
-  box-shadow: 0px 0px 5px 2px #39FF14, 0px 0px 15px 8px #39FF14,
-    0px 0px 110px 20px #39FF14;
-  animation: timeline 0.8s linear infinite forwards;
+  color: #0b080c;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0px 0px 5px 2px #39FF14, 0px 0px 15px 8px rgba(57, 255, 20, 0.5), 0px 0px 40px 10px rgba(57, 255, 20, 0.2);
+  animation: number-heartbeat 1.2s ease-in-out infinite;
 }
 
-@keyframes timeline {
-  10%,
-  20%,
-  50%,
-  70%,
-  90% {
-    box-shadow: 0px 0px 5px 2px #39FF14;
+@keyframes number-heartbeat {
+  0%, 25%, 55%, 100% {
+    box-shadow: 0px 0px 5px 2px #39FF14, 0px 0px 15px 5px rgba(57, 255, 20, 0.3), 0px 0px 30px 10px rgba(57, 255, 20, 0.1);
   }
-  10%,
-  30%,
-  0%,
-  100%,
-  64%,
-  80% {
-    box-shadow: 0px 0px 5px 2px #39FF14, 0px 0px 15px 5px #39FF14,
-      0px 0px 110px 20px #39FF14;
+  10% {
+    box-shadow: 0px 0px 8px 3px #39FF14, 0px 0px 25px 8px rgba(57, 255, 20, 0.5), 0px 0px 60px 20px rgba(57, 255, 20, 0.2);
+  }
+  40% {
+    box-shadow: 0px 0px 6px 2px #39FF14, 0px 0px 20px 6px rgba(57, 255, 20, 0.4), 0px 0px 45px 15px rgba(57, 255, 20, 0.15);
   }
 }
-@keyframes timeline2 {
-  0% {
-    box-shadow: 0px 0px 5px 2px #39FF14;
-  }
-  100% {
-    box-shadow: 0px 0px 5px 2px #39FF14, 0px 0px 15px 5px #39FF14,
-      0px 0px 110px 20px #39FF14;
-  }
+
+@keyframes number-pulse {
+  10%, 20%, 50%, 70%, 90% { box-shadow: 0px 0px 5px 2px #39FF14; }
+  0%, 30%, 100%, 64%, 80% { box-shadow: 0px 0px 5px 2px #39FF14, 0px 0px 15px 5px #39FF14, 0px 0px 50px 10px #39FF14; }
 }
-@media only screen and (max-width: 1400px) {
-  .career-section h2 {
-    font-size: 50px;
-    line-height: 50px;
+
+/* Traveling Blinker Dot (Only visible when scrolling) */
+.career-blinker-dot {
+  position: absolute;
+  left: 50%;
+  top: 0%; /* GSAP will animate this perfectly from 0 to 100% */
+  transform: translate(-50%, -50%); /* Centers the flicker dot */
+  background-color: #39FF14;
+  border-radius: 50%;
+  z-index: 3; /* Behind the number, so it slides under the circumference! */
+  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  box-shadow: 0px 0px 5px 2px #39FF14;
+  transition: opacity 0.2s ease;
+}
+
+.career-blinker-dot.blinking {
+  animation: number-pulse 0.8s linear infinite forwards;
+}
+
+/* ── Carousel Area ──────────────────────────────── */
+.career-carousel-viewport {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.career-carousel-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+}
+
+.career-card-container {
+  width: calc(100vw - 100px - clamp(7.5rem, 16vw, 18rem)); /* Account for timeline width and margin */
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: clamp(4.5rem, 7vw, 9rem);
+  padding-right: clamp(1.5rem, 4vw, 4rem);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* ── Card Content ───────────────────────────────── */
+.career-card {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(57, 255, 20, 0.1);
+  padding: 2.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.career-cardHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.career-period {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #39FF14;
+  font-family: "Fira Code", monospace;
+  letter-spacing: 0.04em;
+}
+
+.career-typeTag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.career-location {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 500;
+}
+
+.career-company {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0.5rem 0;
+  text-transform: uppercase;
+}
+
+.career-role {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #39FF14;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.career-bullets {
+  list-style: none;
+  padding: 0 0 0 1rem;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-left: 2px solid rgba(57, 255, 20, 0.3);
+}
+
+.career-bullet {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.career-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.career-tag {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(57, 255, 20, 0.07);
+  color: #39FF14;
+  border: 1px solid rgba(57, 255, 20, 0.2);
+  letter-spacing: 0.04em;
+}
+
+/* ── Mobile (≤767px) ────────────────────────────── */
+@media (max-width: 767px) {
+  .career-pin-wrap {
+    padding: 60px 0;
   }
-  .career-info h4 {
-    font-size: 22px;
-    line-height: 24px;
-    width: 180px;
-  }
-  .career-info h5 {
-    font-size: 17px;
-  }
-  .career-info h3 {
-    font-size: 40px;
-  }
-  .career-info-box p {
-    font-size: 14px;
-  }
-  .career-info-in {
-    width: 45%;
-    gap: 20px;
+  
+  .career-body-row {
+    margin-top: 1rem;
   }
 
-  .career-info-box p {
-    width: 45%;
+  .career-timeline-container {
+    width: 60px; /* Thinner on mobile */
+    margin-left: 1.8rem;
+  }
+
+  .career-timeline-number {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  .career-card-container {
+    width: calc(100vw - 60px - 1.8rem);
+    padding: 0 0.5rem 0 2.5rem;
+  }
+
+  .career-card {
+    padding: 1.2rem;
+  }
+  
+  .career-company {
+    font-size: 1.3rem;
+  }
+  
+  .career-role {
+    font-size: 0.9rem;
+  }
+  
+  .career-bullet {
+    font-size: 0.85rem;
   }
 }
-@media only screen and (max-width: 1025px) {
-  .career-section {
-    padding: 70px 0px;
-    padding-top: 220px;
-    margin-top: -200px;
-    margin-bottom: 0;
-  }
-}
+
 @media only screen and (max-width: 900px) {
-  .career-info-box {
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 70px;
-  }
-  .career-info-in,
-  .career-info-box p {
-    width: 100%;
-    padding-left: 10%;
-    box-sizing: border-box;
-  }
-  .career-timeline {
-    left: 0%;
-  }
-  .career-container {
-    width: calc(100% - 25px);
+  .career-label,
+  .career-header h2 {
+    font-size: 38px;
+    line-height: 40px;
   }
 }
-@media only screen and (max-width: 600px) {
-  .career-info {
-    margin: 0;
-  }
-  .career-section h2 {
-    width: 100%;
-    font-size: 45px;
-    line-height: 45px;
-    margin-top: 0px;
-  }
-  .career-info-in {
-    gap: 0px;
-  }
-  .career-info h3 {
-    font-size: 33px;
-  }
-  .career-info-in,
-  .career-info-box p {
-    padding-left: 5%;
-  }
-  .career-section {
-    padding-top: 90px;
-    margin-top: -70px;
 
-    align-items: start;
-    place-items: inherit;
-    justify-content: left;
+@media only screen and (min-width: 1950px) {
+  .career-label,
+  .career-header h2 {
+    font-size: 4.5rem;
+    line-height: 4.3rem;
   }
 }
