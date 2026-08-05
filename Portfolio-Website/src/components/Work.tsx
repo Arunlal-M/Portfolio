@@ -14,8 +14,8 @@ const PROJECTS = [
     type: "Web Application",
     desc: "A comprehensive QA workflow engine built for ISRO-VSSC. Features an automated PDF generation system using WeasyPrint and a robust Django backend.",
     tech: ["Python", "Django", "WeasyPrint"],
-    image: "/images/placeholder.webp",
-    link: "#"
+    image: "/images/work/VSSC.png",
+    link: "https://vssc.globify.in/"
   },
   {
     id: 2,
@@ -24,8 +24,8 @@ const PROJECTS = [
     type: "Full Stack",
     desc: "A multi-platform booking system offering seamless reservations, real-time availability sync via Socket.IO, and a Flutter mobile application.",
     tech: ["Next.js", "Strapi", "Express", "Flutter", "Socket.IO"],
-    image: "/images/placeholder.webp",
-    link: "#"
+    image: "/images/work/SMANA.png",
+    link: "https://smanahotels.com/"
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const PROJECTS = [
     type: "Frontend",
     desc: "An interactive portal for TRINS School utilizing advanced Framer Motion and GSAP animations for a modern user experience.",
     tech: ["Next.js", "Framer Motion", "GSAP"],
-    image: "/images/placeholder.webp",
+    image: "/images/work/TRINS.png",
     link: "#"
   },
   {
@@ -44,8 +44,8 @@ const PROJECTS = [
     type: "AI / ML",
     desc: "An innovative application that leverages the Google Gemini LLM API to automatically translate and summarize YouTube videos.",
     tech: ["Streamlit", "Gemini LLM API", "SQLite"],
-    image: "/images/placeholder.webp",
-    link: "#"
+    image: "/images/work/YT_TRANSALTOR.png",
+    link: "https://youtubetranslator.streamlit.app/"
   },
   {
     id: 5,
