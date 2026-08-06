@@ -26,7 +26,7 @@
   line-height: calc(2.5vw + 14px);
   font-weight: 600;
   text-transform: uppercase;
-  margin: 0;
+  margin: clamp(1rem, 3vw, 2rem) 0 0 clamp(-4rem, -6vw, -2.5rem);
 }
 
 .work-sectionLabel .hat-h2 {
@@ -68,8 +68,14 @@
 /* ── Slide background ────────────────────────── */
 .work-slideBg {
   position: absolute;
-  inset: 0;
+  top: clamp(0.9375rem, 2vw, 1.9375rem);
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .work-slideImg {
