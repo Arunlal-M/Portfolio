@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
+import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 
 
@@ -18,13 +19,32 @@ const setCharacter = (
       try {
         let character: THREE.Object3D;
         loader.load(
-          "/models/character.glb",
+          "/models/character_webp.glb",
           async (gltf) => {
             character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
             character.traverse((child: any) => {
               if (child.isMesh) {
                 const mesh = child as THREE.Mesh;
+                // Sanitize NaN values in geometry before computing bounding sphere
+                if (mesh.geometry) {
+                  const posAttr = mesh.geometry.getAttribute('position');
+                  if (posAttr) {
+                    const arr = posAttr.array;
+                    let hasNaN = false;
+                    for (let i = 0; i < arr.length; i++) {
+                      if (isNaN(arr[i] as number)) {
+                        (arr as Float32Array)[i] = 0;
+                        hasNaN = true;
+                      }
+                    }
+                    if (hasNaN) {
+                      posAttr.needsUpdate = true;
+                    }
+                  }
+                  mesh.geometry.computeBoundingSphere();
+                  mesh.geometry.computeBoundingBox();
+                }
                 child.castShadow = true;
                 child.receiveShadow = true;
                 mesh.frustumCulled = true;
