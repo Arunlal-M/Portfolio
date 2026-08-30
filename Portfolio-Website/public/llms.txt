@@ -1,0 +1,23 @@
+# Arun Lal M — Portfolio
+
+## About
+Arun Lal M is a Creative Full-Stack Software Developer and DevOps Engineer
+with around 2 years of experience in distributed backend systems, real-time
+architectures, and scalable cloud applications.
+
+## Contact
+- Email: arunlal.m2000@gmail.com
+- Phone: +91 8301073565
+- GitHub: https://github.com/Arunlal-M
+- LinkedIn: https://linkedin.com/in/arun-lal-m
+
+## Skills
+React, Next.js, Node.js, Express, Django, TypeScript, JavaScript, Python,
+MongoDB, MySQL, Docker, Kubernetes, Terraform, AWS, CI/CD
+
+## Projects
+- ISRO-VSSC Portal: QA Workflow Engine (Python, Django, WeasyPrint)
+- Smana Al Raffa Hotel: Booking system (Next.js, Strapi, Express, Flutter, Socket.IO)
+- TRINS School Portal: Interactive portal (Next.js, Framer Motion, GSAP)
+- YouTube Video Translator: AI translation app (Streamlit, Gemini LLM API, SQLite)
+- DevOps Infrastructure: Containerized microservices (Docker, AWS ECR, Kubernetes, Terraform)
