@@ -1,10 +1,12 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
+import { smoother } from './Navbar'
 import './styles/Work.css'
 
-gsap.registerPlugin(useGSAP, ScrollTrigger)
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin)
 
 const PROJECTS = [
   {
@@ -14,7 +16,7 @@ const PROJECTS = [
     type: "Web Application",
     desc: "A comprehensive QA workflow engine built for ISRO-VSSC. Features an automated PDF generation system using WeasyPrint and a robust Django backend.",
     tech: ["Python", "Django", "WeasyPrint"],
-    image: "/images/work/VSSC.png",
+    image: "/images/work/VSSC.webp",
     link: "https://vssc.globify.in/"
   },
   {
@@ -24,7 +26,7 @@ const PROJECTS = [
     type: "Full Stack",
     desc: "A multi-platform booking system offering seamless reservations, real-time availability sync via Socket.IO, and a Flutter mobile application.",
     tech: ["Next.js", "Strapi", "Express", "Flutter", "Socket.IO"],
-    image: "/images/work/SMANA.png",
+    image: "/images/work/SMANA.webp",
     link: "https://smanahotels.com/"
   },
   {
@@ -34,7 +36,7 @@ const PROJECTS = [
     type: "Frontend",
     desc: "An interactive portal for TRINS School utilizing advanced Framer Motion and GSAP animations for a modern user experience.",
     tech: ["Next.js", "Framer Motion", "GSAP"],
-    image: "/images/work/TRINS.png",
+    image: "/images/work/TRINS.webp",
     link: "#"
   },
   {
@@ -44,7 +46,7 @@ const PROJECTS = [
     type: "AI / ML",
     desc: "An innovative application that leverages the Google Gemini LLM API to automatically translate and summarize YouTube videos.",
     tech: ["Streamlit", "Gemini LLM API", "SQLite"],
-    image: "/images/work/YT_TRANSALTOR.png",
+    image: "/images/work/YT_TRANSALTOR.webp",
     link: "https://youtubetranslator.streamlit.app/"
   },
   {
@@ -66,7 +68,6 @@ export default function Work() {
   const bgRefs      = useRef<(HTMLDivElement | null)[]>([])
   const counterRef  = useRef<HTMLSpanElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
-  const [, setSlideIdx] = useState(0)
 
   useGSAP(() => {
     const section = sectionRef.current
@@ -84,35 +85,40 @@ export default function Work() {
 
     const tl = gsap.timeline({ paused: true })
 
+    // Add empty pause at start: 1 full duration
+    tl.to({}, { duration: 1 })
+
     // Horizontal slide - xPercent is viewport-independent
     tl.to(track, {
       xPercent: -((n - 1) / n * 100),
       ease: 'none',
       duration: n - 1,
-    }, 0)
+    }, 1)
 
     for (let i = 0; i < n - 1; i++) {
       const curr   = contentRefs.current[i]
       const next   = contentRefs.current[i + 1]
       const nextBg = bgRefs.current[i + 1]
+      
+      const st_time = i + 1
 
       if (curr) {
         tl.to(curr, {
           opacity: 0, y: -40, filter: 'blur(6px)',
           duration: 0.2, ease: 'power2.in',
-        }, i + 0.30)
+        }, st_time + 0.30)
       }
 
       if (nextBg) {
         tl.fromTo(nextBg,
           { scale: 1.04 },
           { scale: 1.0, duration: 1.0, ease: 'power2.out' },
-          i
+          st_time
         )
       }
 
       if (next) {
-        tl.set(next, { opacity: 1, y: 0 }, i + 0.44)
+        tl.to(next, { opacity: 1, y: 0, duration: 0.2 }, st_time + 0.44)
         const meta  = next.querySelector(`.work-meta`)
         const title = next.querySelector(`.work-title`)
         const sub   = next.querySelector(`.work-subtitle`)
@@ -120,24 +126,65 @@ export default function Work() {
         const tags  = next.querySelectorAll(`.work-tag`)
         const btn   = next.querySelector(`.work-liveBtn`)
 
-        if (meta)  tl.fromTo(meta,  { x: -10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: 'power2.out' }, i + 0.45)
-        if (title) tl.fromTo(title, { opacity: 0, y: 20 },  { opacity: 1, y: 0, duration: 0.45, ease: 'expo.out'   }, i + 0.48)
-        if (sub)   tl.fromTo(sub,   { y: 12, opacity: 0 },  { y: 0, opacity: 1, duration: 0.30, ease: 'power2.out' }, i + 0.54)
-        if (desc)  tl.fromTo(desc,  { y: 10, opacity: 0 },  { y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' }, i + 0.58)
+        if (meta)  tl.fromTo(meta,  { x: -10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: 'power2.out' }, st_time + 0.45)
+        if (title) tl.fromTo(title, { opacity: 0, y: 20 },  { opacity: 1, y: 0, duration: 0.45, ease: 'expo.out'   }, st_time + 0.48)
+        if (sub)   tl.fromTo(sub,   { y: 12, opacity: 0 },  { y: 0, opacity: 1, duration: 0.30, ease: 'power2.out' }, st_time + 0.54)
+        if (desc)  tl.fromTo(desc,  { y: 10, opacity: 0 },  { y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' }, st_time + 0.58)
         if (tags.length) {
-          tl.fromTo(tags,  { y: 6, opacity: 0 },  { y: 0, opacity: 1, duration: 0.25, ease: 'power2.out', stagger: 0.03 }, i + 0.65)
+          tl.fromTo(tags,  { y: 6, opacity: 0 },  { y: 0, opacity: 1, duration: 0.25, ease: 'power2.out', stagger: 0.03 }, st_time + 0.65)
         }
-        if (btn)   tl.fromTo(btn,   { y: 8, opacity: 0 },  { y: 0, opacity: 1, duration: 0.30, ease: 'power2.out' }, i + 0.72)
+        if (btn)   tl.fromTo(btn,   { y: 8, opacity: 0 },  { y: 0, opacity: 1, duration: 0.30, ease: 'power2.out' }, st_time + 0.72)
       }
     }
 
+    // Add empty pause at end: 1 full duration
+    tl.to({}, { duration: 1 })
+
+    const snapPoints = [0];
+    for (let i = 1; i < n - 1; i++) snapPoints.push((i + 1) / (n + 1));
+    snapPoints.push(1);
+
+    let timer: gsap.core.Tween | null = null;
+
+    const startTimer = (currentIdx: number) => {
+      if (timer) timer.kill();
+      if (currentIdx >= n - 1) return; // stops on last project
+      
+      timer = gsap.delayedCall(3, () => {
+        const trigger = ScrollTrigger.getById('work-st');
+        if (!trigger) return;
+        
+        // Ensure we only auto-slide if the user is still within this section
+        const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
+        if (scrollY < trigger.start - 10 || scrollY > trigger.end + 10) return;
+        
+        const targetProgress = snapPoints[currentIdx + 1];
+        const targetY = trigger.start + targetProgress * (trigger.end - trigger.start);
+        
+        if (smoother) {
+          gsap.to(smoother, {
+            scrollTop: targetY,
+            duration: 1,
+            ease: 'power2.inOut'
+          });
+        } else {
+          gsap.to(window, {
+            scrollTo: targetY,
+            duration: 1,
+            ease: 'power2.inOut'
+          });
+        }
+      });
+    };
+
     const st = ScrollTrigger.create({
+      id:       'work-st',
       trigger:  section,
       start:    'top top',
-      end:      () => `+=${(n - 1) * window.innerHeight}`,
+      end:      () => `+=${(n + 1) * window.innerHeight}`,
       pin:      true,
       snap: {
-        snapTo: 1 / (n - 1),
+        snapTo: snapPoints,
         delay: 0,
         duration: { min: 0.2, max: 0.4 },
         ease: 'power2.out',
@@ -145,8 +192,14 @@ export default function Work() {
       },
       onUpdate: (self) => {
         tl.progress(self.progress)
-        const activeIdx = Math.round(self.progress * (n - 1))
-        setSlideIdx(prev => prev !== activeIdx ? activeIdx : prev)
+        
+        const time = self.progress * (n + 1);
+        let activeIdx = Math.floor(time - 0.5);
+        if (activeIdx < 0) activeIdx = 0;
+        if (activeIdx > n - 1) activeIdx = n - 1;
+
+        startTimer(activeIdx);
+
         if (progressRef.current) {
           gsap.set(progressRef.current, {
             scaleX: self.progress, transformOrigin: 'left center', overwrite: true,
@@ -189,17 +242,13 @@ export default function Work() {
               ref={el => { bgRefs.current[i] = el }}
               className="work-slideBg"
             >
-              <img
-                src={proj.image}
-                alt={proj.title}
-                className="work-slideImg"
-              />
-              <div className="work-slideOverlayLeft"   aria-hidden />
-              <div className="work-slideOverlayBottom" aria-hidden />
-              <div className="work-slideVignette"      aria-hidden />
+              <img src={proj.image} alt={proj.title} className="work-slideImg" width="1200" height="675" loading="lazy" />
+              <div className="work-slideOverlayLeft"   aria-hidden="true" />
+              <div className="work-slideOverlayBottom" aria-hidden="true" />
+              <div className="work-slideVignette"      aria-hidden="true" />
             </div>
 
-            <span className="work-slideNum" aria-hidden>0{i + 1}</span>
+            <span className="work-slideNum" aria-hidden="true">0{i + 1}</span>
 
             <div
               ref={el => { contentRefs.current[i] = el }}
@@ -219,7 +268,7 @@ export default function Work() {
                   className="work-liveBtn"
                 >
                   <span>Live Demo</span>
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </a>
