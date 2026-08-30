@@ -1,15 +1,14 @@
-import React,{ useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
-// import Marquee from "react-fast-marquee";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 
 const LoadingCharacterModel = React.memo(({ loaded }: { loaded: boolean }) => {
-  const { scene, animations } = useGLTF("/models/Character_RunFast.glb");
+  const { scene, animations } = useGLTF("/models/Character_RunFast_webp.glb");
   const { actions } = useAnimations(animations, scene);
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = React.useRef<THREE.Group>(null);
   const [spinBack, setSpinBack] = useState(false);
 
   useEffect(() => {
@@ -60,8 +59,7 @@ const LoadingCharacterModel = React.memo(({ loaded }: { loaded: boolean }) => {
 });
 
 // Preload the model so it's ready as fast as possible
-useGLTF.preload("/models/Character_RunFast.glb");
-
+useGLTF.preload("/models/Character_RunFast_webp.glb");
 const Loading = ({ percent }: { percent: number }) => {
   const { setIsLoading } = useLoading();
   const [loaded, setLoaded] = useState(false);
@@ -102,21 +100,6 @@ const Loading = ({ percent }: { percent: number }) => {
 
   return (
     <>
-      {/* <div className="loading-header">
-        <a href="/#" className="loader-title" data-cursor="disable">
-          Logo
-        </a>
-        <div className={`loaderGame ${clicked && "loader-out"}`}>
-          <div className="loaderGame-container">
-            <div className="loaderGame-in">
-              {[...Array(27)].map((_, index) => (
-                <div className="loaderGame-line" key={index}></div>
-              ))}
-            </div>
-            <div className="loaderGame-ball"></div>
-          </div>
-        </div>
-      </div> */}
       <div className="loading-screen">
         {/* 3D Character Canvas */}
         <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 10 }}>
@@ -126,12 +109,6 @@ const Loading = ({ percent }: { percent: number }) => {
             <LoadingCharacterModel loaded={loaded} />
           </Canvas>
         </div>
-        {/* <div className="loading-marquee">
-          <Marquee>
-            <span> A Creative Developer</span> <span>A Cloud DevOps</span>
-            <span> A Creative Developer</span> <span>A Cloud DevOps</span>
-          </Marquee>
-        </div> */}
         <div
           className={`loading-wrap ${clicked && "loading-clicked"}`}
           onMouseMove={(e) => handleMouseMove(e)}
