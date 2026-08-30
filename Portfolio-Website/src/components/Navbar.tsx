@@ -20,6 +20,8 @@ const Navbar = () => {
 
     const hideNav = () => {
       if (isHoveringNav) return;
+      if (smoother && smoother.scrollTop() <= 50) return;
+      if (!smoother && window.scrollY <= 50) return;
       gsap.to('.header, .header-glass-bg', { y: -150, duration: 0.5, ease: 'power2.out' });
     };
 
@@ -97,9 +99,22 @@ const Navbar = () => {
   return (
     <>
       <div className={`header-glass-bg ${isMenuOpen ? "menu-open" : ""}`}></div>
-      <div className={`header ${isMenuOpen ? "menu-open" : ""}`}>
+      <header className={`header ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="header-inner">
-          <a href="/#" className="navbar-title" data-cursor="icons">
+          <a
+            href="/#"
+            className="navbar-title"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              if (window.innerWidth > 1024 && smoother) {
+                smoother.scrollTo(0, true);
+              } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
+            <img src="/icon.webp" alt="Logo" className="navbar-logo" width="48" height="48" />
           </a>
           <a
             href="mailto:arunlal.m2000@gmail.com"
@@ -108,12 +123,13 @@ const Navbar = () => {
           >
             arunlal.m2000@gmail.com
           </a>
-          <div className="hamburger-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="hamburger-btn" aria-label="Toggle menu" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenuAlt4 />}
-          </div>
+          </button>
         </div>
         
-        <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+        <nav role="navigation">
+          <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           <li>
             <a data-href="#about" href="#about" data-cursor="icons" onClick={() => setIsMenuOpen(false)}>
               <HoverLinks text="ABOUT" />
@@ -129,8 +145,9 @@ const Navbar = () => {
               <HoverLinks text="CONTACT" />
             </a>
           </li>
-        </ul>
-      </div>
+          </ul>
+        </nav>
+      </header>
 
       <div className="landing-circle1"></div>
       <div className="landing-circle2"></div>
