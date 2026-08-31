@@ -1,0 +1,258 @@
+{
+  "personal": {
+    "name": "Arun Lal M",
+    "title": "Software Engineer | Backend & Full Stack",
+    "location": "Trivandrum, Kerala, India",
+    "contact": {
+      "phone": "+91 8301073565",
+      "email": "arunlal.m2000@gmail.com"
+    },
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/arun-lal-m/",
+      "github": "https://github.com/Arunlal-M",
+      "portfolio": "https://www.arunlal.online/"
+    }
+  },
+  "summary": "Software Engineer with 2+ years of experience architecting distributed backend systems, real-time architectures, and highly scalable cloud applications. Proven expertise in engineering RESTful microservices (Node.js/Django), optimizing databases for high availability (PostgreSQL/MongoDB), and implementing end-to-end CI/CD observability pipelines (Docker/AWS/GitHub Actions). Adept in cross-functional Agile collaboration, system design, and driving measurable performance enhancements for enterprise-grade solutions.",
+  "skills": {
+    "languages": [
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "Python",
+      "SQL",
+      "Bash",
+      "HTML",
+      "CSS"
+    ],
+    "backend_and_architecture": [
+      "Node.js",
+      "Express.js",
+      "Django",
+      "REST APIs",
+      "GraphQL",
+      "gRPC",
+      "Microservices",
+      "Socket.IO",
+      "System Design"
+    ],
+    "frontend": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "SSR",
+      "Streamlit"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "SQLite",
+      "Query Optimization",
+      "ORM",
+      "Mongoose"
+    ],
+    "devops_and_cloud": [
+      "AWS (EC2, S3, ECR)",
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "CI/CD Pipelines",
+      "GitHub Actions",
+      "PM2",
+      "Nginx",
+      "Vercel"
+    ],
+    "security": [
+      "JWT",
+      "OAuth",
+      "RBAC",
+      "CSRF Prevention",
+      "HMAC Webhook Verification"
+    ],
+    "monitoring": [
+      "Prometheus",
+      "Grafana",
+      "Centralized Logging (ELK Stack)"
+    ],
+    "integrations": [
+      "HyperPay",
+      "Razorpay",
+      "Firebase Cloud Messaging",
+      "Nodemailer",
+      "Strapi CMS",
+      "Google Gemini API"
+    ],
+    "tools_and_practices": [
+      "Git",
+      "Linux",
+      "Postman",
+      "Agile/Scrum",
+      "Code Review",
+      "Infrastructure as Code (IaC)",
+      "TDD"
+    ]
+  },
+  "experience": [
+    {
+      "role": "Full Stack Developer",
+      "company": "Globify Software Solutions",
+      "start": "2024-09",
+      "end": "2026-03",
+      "display_date": "Sept 2024 – Mar 2026",
+      "highlights": [
+        "Architected scalable, real-time enterprise platforms using Node.js, Express 5, and Django, with Socket.IO and Redis Pub/Sub synchronizing room bookings and live orders across 7 role-based dashboards.",
+        "Established a PCI-compliant HyperPay payment gateway with HMAC webhook verification, enabling secure tokenized checkouts within ERP applications.",
+        "Containerized services with Docker and CI/CD pipelines via GitHub Actions on AWS EC2/S3, maintaining 99.9% uptime with zero-downtime deployments.",
+        "Provisioned infrastructure using Terraform, managed Linux VPS environments with Nginx for SSL/TLS load balancing, and enforced HTTP-only JWT token rotation across APIs."
+      ]
+    },
+    {
+      "role": "Full Stack Development Intern",
+      "company": "MashupStack",
+      "start": "2023-10",
+      "end": "2024-07",
+      "display_date": "Oct 2023 – Jul 2024",
+      "highlights": [
+        "Crafted responsive React frontends and Django REST Framework backends for live production workflows.",
+        "Enhanced PostgreSQL and MySQL schemas via strategic indexing and ORM tuning, reducing API response latency by 40%.",
+        "Configured AWS S3 for secure file storage and granular Role-Based Access Control (RBAC) with page-level permissions."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "ISRO-VSSC — Certification Operations Portal",
+      "url": "http://13.238.73.252:8001/users/login/",
+      "description": "Created a monolithic N-level QA workflow engine in Python and Django to track 229 aerospace products through multi-tier approval chains, with a polymorphic GenericForeignKey approval system and audited PDF generation via WeasyPrint.",
+      "technologies": [
+        "Python",
+        "Django",
+        "GenericForeignKey",
+        "WeasyPrint"
+      ]
+    },
+    {
+      "name": "Smana Al Raffa — Hotel Platform",
+      "subtitle": "Booking Website, PWA Admin Panel & Guest Mobile App",
+      "url": "https://smanahotels.com/",
+      "description": "Built an SSR Next.js website with slug-based routing backed by Strapi v5 Headless CMS, covering rooms, restaurants, tours, facilities, offers, and gallery pages; embedded SwiftBook for PCI-compliant off-server booking transactions.",
+      "highlights": [
+        "Engineered a real-time hotel management platform with a Next.js 16 PWA admin panel, Express 5 REST API, and Flutter guest mobile app, synchronizing reservations, room status, and service workflows across all devices.",
+        "Implemented Socket.IO with Redis Pub/Sub for live updates across 5 role-based dashboards (Admin, Manager, Receptionist, Housekeeping, Chef); integrated HyperPay tokenized payments, Firebase Cloud Messaging notifications, and automated cron-based checkout/cleanup jobs."
+      ],
+      "technologies": [
+        "Next.js",
+        "Express 5",
+        "Flutter",
+        "Strapi v5",
+        "Socket.IO",
+        "Redis Pub/Sub",
+        "HyperPay",
+        "Firebase Cloud Messaging"
+      ]
+    },
+    {
+      "name": "TRINS — Trivandrum International School Portal",
+      "description": "Developed an SEO-optimized Next.js SSR application with Framer Motion and GSAP animations; configured API route handlers for direct SMTP email delivery without a dedicated middleware server.",
+      "technologies": [
+        "Next.js",
+        "SSR",
+        "Framer Motion",
+        "GSAP",
+        "SMTP"
+      ]
+    },
+    {
+      "name": "YouTube Video Translator — AI-Powered Streaming App",
+      "url": "https://youtubetranslator.streamlit.app/",
+      "description": "Launched a Streamlit app for real-time YouTube transcript translation into 10+ languages via the Google Gemini LLM API, with an SQLite caching layer reducing latency from 15 seconds to 5 milliseconds and cutting redundant API costs.",
+      "technologies": [
+        "Streamlit",
+        "Google Gemini LLM API",
+        "SQLite",
+        "Python"
+      ],
+      "metrics": {
+        "languages_supported": "10+",
+        "latency_before": "15 seconds",
+        "latency_after": "5 milliseconds"
+      }
+    },
+    {
+      "name": "Cloud & DevOps Architecture",
+      "description": "Designed and automated AWS/GCP cloud infrastructure using Terraform and Ansible, built CI/CD pipelines with Jenkins, GitHub Actions, and GitLab, containerized applications with Docker, deployed workloads on Kubernetes and Helm, implemented GitOps with Argo CD, and configured Prometheus, Grafana, Loki, and Alloy for production monitoring and observability, leveraging GitHub Copilot and Amazon Q for AI-assisted automation.",
+      "technologies": [
+        "AWS",
+        "GCP",
+        "Terraform",
+        "Ansible",
+        "Jenkins",
+        "GitHub Actions",
+        "GitLab",
+        "Docker",
+        "Kubernetes",
+        "Helm",
+        "Argo CD",
+        "Prometheus",
+        "Grafana",
+        "Loki",
+        "Alloy",
+        "GitHub Copilot",
+        "Amazon Q"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "credential": "B.Tech in Computer Science",
+      "institution": "University College of Engineering Kariavattom",
+      "start": "2019",
+      "end": "2023"
+    },
+    {
+      "credential": "Higher Secondary Certificate",
+      "institution": "St. Joseph's HSS, Trivandrum",
+      "start": "2017",
+      "end": "2019"
+    },
+    {
+      "credential": "High School Certificate (SSLC)",
+      "institution": "Govt. Model BHSS Thycaud, Trivandrum",
+      "start": "2016",
+      "end": "2017"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Advanced DevOps with AI",
+      "issuer": "Udemy",
+      "year": 2026,
+      "url": "http://ude.my/UC-17b53502-2a09-4dcb-b7f2-5f985bc1a710"
+    },
+    {
+      "name": "AWS Cloud Essentials",
+      "issuer": "AWS",
+      "year": 2026,
+      "url": "https://www.credly.com/badges/8f2b9bd1-0164-4357-b89e-a7d16272fa61/public_url"
+    },
+    {
+      "name": "React/Python Full Stack",
+      "issuer": "Mashup Stack",
+      "start": "2023",
+      "end": "2024",
+      "url": "https://drive.google.com/file/d/1bzTHCMpCZsq7Txxc3oPtOIrd70CaKHp-/view?usp=sharing"
+    }
+  ],
+  "leadership_and_extracurriculars": [
+    "Promoted to Acting Team Lead and Software Developer within one year at Globify, leading system design reviews, cross-team debugging, and mentoring 2 junior engineers within Agile sprints.",
+    "Served as Platoon Commander in the National Cadet Corps (NCC) and active Volunteer with the National Service Scheme (NSS), leading battalion-level training and community outreach initiatives.",
+    "Competitive college Volleyball and Badminton player, avid strategy and RPG gamer, sharpening analytical and decision-making skills."
+  ],
+  "ai_context": {
+    "primary_profile": "Software Engineer focused on backend, full-stack, cloud, DevOps, distributed systems, real-time systems, and AI-assisted engineering.",
+    "years_experience": "2+ years",
+    "current_resume_version": "v6",
+    "source_of_truth": "Arun Lal M — Résumé v6"
+  }
+}
