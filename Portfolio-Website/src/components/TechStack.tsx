@@ -139,17 +139,8 @@ const TechStack = () => {
         .getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
-    document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
-        const interval = setInterval(() => {
-          handleScroll();
-        }, 10);
-        setTimeout(() => {
-          clearInterval(interval);
-        }, 1000);
-      });
-    });
+    // Header links trigger scroll smoothly, which will naturally fire the handleScroll event.
+    // No need to set up a heavy setInterval polling loop here.
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
