@@ -3,55 +3,11 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import { smoother } from './Navbar';
+import { EXPS } from '../data/experience';
 import "./styles/Career.css";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-const EXPS = [
-  {
-    id: 1,
-    period: "2024",
-    periodEnd: "2026",
-    type: "Full-Time",
-    location: "Globify",
-    company: "Globify Software Solutions",
-    role: "Full Stack Developer",
-    bullets: [
-      "Architected scalable, real-time enterprise platforms using Node.js, Express 5, and Django.",
-      "Established PCI-compliant payment gateways, containerized services with Docker/AWS, and provisioned infrastructure using Terraform."
-    ],
-    tech: ["Node.js", "Express", "Django", "Docker", "AWS", "Terraform"]
-  },
-  {
-    id: 2,
-    period: "2023",
-    periodEnd: "2024",
-    type: "Internship",
-    location: "MashupStack",
-    company: "MashupStack",
-    role: "Full Stack Intern",
-    bullets: [
-      "Crafted responsive React frontends and Django REST Framework backends for live production workflows.",
-      "Enhanced PostgreSQL/MySQL schemas, reducing API response latency by 40%."
-    ],
-    tech: ["React", "Django REST", "PostgreSQL", "MySQL"]
-  },
-  {
-    id: 3,
-    period: "2019",
-    periodEnd: "2023",
-    type: "Education",
-    location: "Kariavattom",
-    company: "University College of Engineering",
-    role: "B.Tech in Computer Science",
-    bullets: [
-      "Completed Bachelor of Technology in Computer Science and Engineering.",
-      "Laid a strong foundation in software development, data structures, algorithms, and system design."
-    ],
-    tech: ["Data Structures", "Algorithms", "System Design"]
-  }
-];
 
 const Career = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -83,7 +39,7 @@ const Career = () => {
         return -(cardWidth * (cards.length - 1));
       }
       
-      let trackWidth = track.scrollWidth;
+      const trackWidth = track.scrollWidth;
       // Use parent container's width, which handles the right side
       const containerWidth = track.parentElement?.clientWidth || window.innerWidth;
       return -(trackWidth - containerWidth);
