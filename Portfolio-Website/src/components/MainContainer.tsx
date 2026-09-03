@@ -5,12 +5,13 @@ import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
-import setSplitText from "./utils/splitText";
+import setSplitText from "../utils/splitText";
 
 const Career = lazy(() => import("./Career"));
 const Contact = lazy(() => import("./Contact"));
 const Work = lazy(() => import("./Work"));
 const TechStack = lazy(() => import("./TechStack"));
+const ChatWidget = lazy(() => import("./ChatWidget"));
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -34,6 +35,9 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
       {isDesktopView && children}
       <div id="smooth-wrapper">
         <div id="smooth-content">
