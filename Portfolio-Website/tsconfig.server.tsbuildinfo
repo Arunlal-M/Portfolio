@@ -1,0 +1,1 @@
+{"root":["./api/analyze-contact.ts","./api/chat.ts","./api/recommend-project.ts","./api/lib/ai/models.ts","./api/lib/ai/prompts.ts","./api/lib/ai/tools.ts","./api/lib/db/queries.ts","./api/lib/db/supabase.ts","./api/lib/security/limits.ts","./scripts/ingest.ts"],"version":"5.9.3"}
