@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import type { GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
 const setAnimations = (gltf: GLTF) => {
-  let character = gltf.scene;
-  let mixer = new THREE.AnimationMixer(character);
+  const character = gltf.scene;
+  const mixer = new THREE.AnimationMixer(character);
   if (gltf.animations) {
     const introClip = gltf.animations.find(
       (clip) => clip.name === "introAnimation"
@@ -14,7 +14,7 @@ const setAnimations = (gltf: GLTF) => {
       introAction.play();
     }
     // const clipNames = ["key1", "key2", "key5", "key6"];
-    let playedCustom = false;
+    const playedCustom = false;
     // clipNames.forEach((name) => {
     //   const clip = THREE.AnimationClip.findByName(gltf.animations, name);
     //   if (clip) {
@@ -57,7 +57,7 @@ const setAnimations = (gltf: GLTF) => {
       if (blink) mixer.clipAction(blink).play().fadeIn(0.5);
     }, 2500);
   }
-  function hover(_gltf: GLTF, _hoverDiv: HTMLDivElement) {
+  function hover() {
     // let eyeBrowUpAction = createBoneAction(
     //   gltf,
     //   mixer,
