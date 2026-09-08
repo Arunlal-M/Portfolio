@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
+import { setCharTimeline, setAllTimeline } from "../../../utils/GsapScroll";
 
 
 const setCharacter = (
@@ -21,10 +21,15 @@ const setCharacter = (
         loader.load(
           "/models/character_webp.glb",
           async (gltf) => {
+            if (renderer.getContext().isContextLost()) {
+              dracoLoader.dispose();
+              resolve(null);
+              return;
+            }
             character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
-            character.traverse((child: any) => {
-              if (child.isMesh) {
+            character.traverse((child: THREE.Object3D) => {
+              if ((child as THREE.Mesh).isMesh) {
                 const mesh = child as THREE.Mesh;
                 // Sanitize NaN values in geometry before computing bounding sphere
                 if (mesh.geometry) {
