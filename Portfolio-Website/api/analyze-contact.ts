@@ -1,7 +1,7 @@
-import { generateContent, CHAT_MODEL } from "./lib/ai/models";
-import { CONTACT_ANALYSIS_SYSTEM_PROMPT, ContactAnalysisResultSchema } from "./lib/ai/prompts";
-import { insertContactMessage } from "./lib/db/queries";
-import { AnalyzeContactRequestSchema, rateLimit, stripControlCharacters } from "./lib/security/limits";
+import { generateContent, CHAT_MODEL } from "./lib/ai/models.js";
+import { CONTACT_ANALYSIS_SYSTEM_PROMPT, ContactAnalysisResultSchema } from "./lib/ai/prompts.js";
+import { insertContactMessage } from "./lib/db/queries.js";
+import { AnalyzeContactRequestSchema, rateLimit, stripControlCharacters } from "./lib/security/limits.js";
 
 export const config = { runtime: "nodejs" };
 

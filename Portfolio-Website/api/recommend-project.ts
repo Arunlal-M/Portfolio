@@ -1,5 +1,5 @@
-import { recommendProjects } from "./lib/ai/tools";
-import { RecommendProjectRequestSchema, rateLimit, stripControlCharacters } from "./lib/security/limits";
+import { recommendProjects } from "./lib/ai/tools.js";
+import { RecommendProjectRequestSchema, rateLimit, stripControlCharacters } from "./lib/security/limits.js";
 
 export const config = { runtime: "nodejs" };
 

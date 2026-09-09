@@ -1,7 +1,7 @@
-import { generateContent, CHAT_MODEL } from "./lib/ai/models";
-import { CHAT_SYSTEM_PROMPT, formatContextBlock } from "./lib/ai/prompts";
-import { retrievePortfolioContext } from "./lib/ai/tools";
-import { ChatRequestSchema, rateLimit, stripControlCharacters } from "./lib/security/limits";
+import { generateContent, CHAT_MODEL } from "./lib/ai/models.js";
+import { CHAT_SYSTEM_PROMPT, formatContextBlock } from "./lib/ai/prompts.js";
+import { retrievePortfolioContext } from "./lib/ai/tools.js";
+import { ChatRequestSchema, rateLimit, stripControlCharacters } from "./lib/security/limits.js";
 
 export const config = { runtime: "nodejs" };
 
