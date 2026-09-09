@@ -3,7 +3,7 @@
  * Supabase directly. The AI layer (api/lib/ai/) must call these functions
  * instead of querying Supabase itself.
  */
-import { supabase } from "./supabase";
+import { supabase } from "./supabase.js";
 
 export interface PortfolioDocument {
   id: number;

@@ -3,8 +3,8 @@
  * between the AI layer and the DAO — routes call these, not queries.ts
  * directly, and never construct Supabase calls themselves.
  */
-import { embedText } from "./models";
-import { matchPortfolioDocuments, matchProjects, type PortfolioDocument, type Project } from "../db/queries";
+import { embedText } from "./models.js";
+import { matchPortfolioDocuments, matchProjects, type PortfolioDocument, type Project } from "../db/queries.js";
 
 export async function retrievePortfolioContext(query: string, matchCount = 5): Promise<PortfolioDocument[]> {
   const embedding = await embedText(query);
