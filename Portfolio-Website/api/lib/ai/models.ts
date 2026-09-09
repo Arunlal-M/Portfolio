@@ -43,5 +43,9 @@ export async function embedText(text: string): Promise<number[]> {
 }
 
 export async function generateContent(params: GenerateContentParameters): Promise<GenerateContentResponse> {
-  return withRetry(() => ai.models.generateContent(params));
+  const config = {
+    thinkingConfig: { thinkingBudget: 0 },
+    ...params.config,
+  };
+  return withRetry(() => ai.models.generateContent({ ...params, config }));
 }
