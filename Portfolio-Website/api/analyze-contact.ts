@@ -3,7 +3,7 @@ import { CONTACT_ANALYSIS_SYSTEM_PROMPT, ContactAnalysisResultSchema } from "./l
 import { insertContactMessage } from "./lib/db/queries.js";
 import { AnalyzeContactRequestSchema, rateLimit, stripControlCharacters } from "./lib/security/limits.js";
 
-export const config = { runtime: "nodejs" };
+export const config = { runtime: "edge" };
 
 export default async function handler(request: Request): Promise<Response> {
   if (request.method !== "POST") {
