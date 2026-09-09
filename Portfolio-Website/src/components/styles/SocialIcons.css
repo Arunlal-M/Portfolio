@@ -10,7 +10,7 @@
 .social-icons {
   position: absolute;
   left: -20px;
-  bottom: 20px;
+  bottom: 90px;
   display: none;
   flex-direction: column;
   gap: 8px;
@@ -49,8 +49,8 @@
   z-index: 99;
   display: flex;
   gap: 5px;
-  bottom: 40px;
-  right: 0;
+  bottom: 20px;
+  left: -20px;
   width: auto;
   text-wrap: nowrap;
   letter-spacing: 4px;
@@ -60,8 +60,8 @@
   color: #a1a1a1;
   cursor: pointer;
   transition: 0.5s;
-  transform-origin: left bottom;
-  transform: translateX(100%) rotateZ(-90deg);
+  transform-origin: right bottom;
+  transform: translateX(-100%) rotateZ(90deg);
 }
 .resume-button:hover {
   color: #fff;
