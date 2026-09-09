@@ -43,4 +43,6 @@ const EarthCanvas = () => {
   );
 };
 
+useGLTF.preload("/models/black_hole.glb");
+
 export default EarthCanvas;
